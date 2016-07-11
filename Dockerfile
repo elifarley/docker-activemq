@@ -28,5 +28,6 @@ RUN xinstall add-user "$_USER"
 RUN xinstall add-base
 
 COPY $_USER.sh $HOME/
+RUN chmod +x "$HOME"/$_USER.sh && chown "$_USER" "$HOME"/$_USER.sh
 
 VOLUME /data /tmp/activemq
