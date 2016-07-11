@@ -18,16 +18,15 @@ WORKDIR $HOME
 
 RUN \
   xinstall save-image-info && \
+  xinstall add-user "$_USER" && \
   xinstall add activemq 5.13.3 c19e2717f5c844a2f271fcd39eb024d04ebcfa5d && \
+  chown -R "$_USER":"$_USER" /usr/local/apache-activemq* && \
   xinstall add tini "$TINI_VERSION" "$TINI_SHA" && \
   xinstall add gosu "$GOSU_VERSION" "$GOSU_SHA" && \
+  xinstall add-base && \
   xinstall cleanup
 
-RUN xinstall add-user "$_USER"
-
-RUN xinstall add-base
-
 COPY $_USER.sh $HOME/
-RUN chmod +x "$HOME"/$_USER.sh && chown "$_USER" "$HOME"/$_USER.sh
+RUN chmod +x "$HOME"/$_USER.sh && chown "$_USER":"$_USER" "$HOME"/$_USER.sh
 
 VOLUME /data /tmp/activemq
