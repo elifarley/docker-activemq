@@ -19,7 +19,7 @@ WORKDIR $HOME
 RUN \
   xinstall save-image-info && \
   xinstall add-user "$_USER" && \
-  xinstall add activemq 5.13.3 c19e2717f5c844a2f271fcd39eb024d04ebcfa5d && \
+  xinstall add activemq 5.13.3 && \
   xinstall add tini "$TINI_VERSION" "$TINI_SHA" && \
   xinstall add gosu "$GOSU_VERSION" "$GOSU_SHA" && \
   xinstall add-base && \
