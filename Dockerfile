@@ -33,4 +33,4 @@ RUN chmod +x "$HOME"/$_USER.sh && chown "$_USER":"$_USER" "$HOME"/$_USER.sh
 
 EXPOSE 61612 61613 61616 8161
 
-VOLUME /data /tmp/activemq
+VOLUME /data
