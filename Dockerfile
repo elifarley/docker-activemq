@@ -18,10 +18,10 @@ WORKDIR $HOME
 RUN \
   xinstall save-image-info && \
   xinstall add-user "$_USER" && \
-  xinstall add activemq 5.13.3 && \
   xinstall add gosu "$GOSU_VERSION" && \
   xinstall add tini "$TINI_VERSION" && \
-  xinstall add-base && \
+  xinstall add entrypoint && \
+  xinstall add activemq 5.13.3 && \
   xinstall cleanup
 
 COPY $_USER.sh $HOME/
