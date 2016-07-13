@@ -9,8 +9,7 @@ LANG=en_US.UTF-8 TZ=${TZ:-Brazil/East} \
 TERM=xterm-256color
 ENV HOME=/$_USER JAVA_TOOL_OPTIONS="-Duser.timezone=$TZ"
 
-EXPOSE 61612 61613 61616 8161
-ENTRYPOINT ["/bin/tini", "--", "/entry.sh"]
+ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/entrypoint"]
 CMD ["/app/app.sh"]
 
 WORKDIR $HOME
@@ -26,5 +25,7 @@ RUN \
 
 COPY $_USER.sh $HOME/
 RUN chmod +x "$HOME"/$_USER.sh && chown "$_USER":"$_USER" "$HOME"/$_USER.sh
+
+EXPOSE 61612 61613 61616 8161
 
 VOLUME /data /tmp/activemq
