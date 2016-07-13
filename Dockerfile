@@ -22,10 +22,10 @@ RUN \
   xinstall add entrypoint && \
   xinstall add activemq 5.13.3 && \
   xinstall cleanup && \
-  (
+  (\
     cd /usr/local/apache-activemq/conf && \
     chown :$_USER . jetty-realm.properties users.properties && \
-    chmod g=u . jetty-realm.properties users.properties
+    chmod g=u . jetty-realm.properties users.properties \
   )
 
 COPY $_USER.sh $HOME/
