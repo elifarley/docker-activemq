@@ -21,7 +21,12 @@ RUN \
   xinstall add tini "$TINI_VERSION" && \
   xinstall add entrypoint && \
   xinstall add activemq 5.13.3 && \
-  xinstall cleanup
+  xinstall cleanup && \
+  (
+    cd /usr/local/apache-activemq/conf && \
+    chown :$_USER . jetty-realm.properties users.properties && \
+    chmod g=u . jetty-realm.properties users.properties
+  )
 
 COPY $_USER.sh $HOME/
 RUN chmod +x "$HOME"/$_USER.sh && chown "$_USER":"$_USER" "$HOME"/$_USER.sh
