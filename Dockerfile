@@ -11,7 +11,7 @@ RUN \
   xinstall cleanup && \
   chmod +x "$HOME"/*app*.sh && chown "$_USER":"$_USER" "$HOME"/*app.sh && \
   (\
-    echo '/data/activemq.log:out' >/mnt-env-vars/CEP_LOG_FILES && \
+    mkdir /mnt-env-vars && echo '/data/activemq.log:out' >/mnt-env-vars/CEP_LOG_FILES && \
     cd /usr/local/apache-activemq/conf && \
     chown :$_USER .. . jetty-realm.properties users.properties && \
     chmod g=u .. . jetty-realm.properties users.properties \
